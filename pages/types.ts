@@ -19,18 +19,42 @@ export interface Course {
     id: string;
     title: string;
     short_description: string;
-    description: string; // Full description, can contain HTML
+    description: string;
     outcomes: string[];
+    language: string;
+    category_id: string;
+    sub_category_id: string;
+    section: string; // JSON string array
     requirements: string[];
     price: string;
-    level: 'Beginner' | 'Intermediate' | 'Advanced' | string;
-    is_free_course: string | null;
-    total_number_of_lessons: number;
-    instructor_name: string;
+    discount_flag: string | null;
+    discounted_price: string;
+    level: 'beginner' | 'intermediate' | 'advanced' | string;
+    user_id: string;
     thumbnail: string;
+    video_url: string;
+    expiry_days: string;
+    date_added: string;
+    last_modified: string;
+    course_type: string;
+    is_top_course: string;
+    is_highlight_course: string;
+    is_admin: string;
+    is_disabled: string;
     status: 'active' | 'coming_soon' | string;
-    comingSoon?: boolean;
-    // For enrolled courses
+    course_overview_provider: string;
+    meta_keywords: string;
+    meta_description: string;
+    is_free_course: string | null;
+    is_limit_working: string;
+    multi_instructor: string;
+    creator: string;
+    cover_image: string;
+    rating: number;
+    number_of_ratings: number;
+    instructor_name: string;
+    total_enrollment: number;
+    total_number_of_lessons: number;
     completion?: number;
     total_number_of_completed_lessons?: number;
 }
@@ -43,22 +67,46 @@ export interface Bundle {
   image: string;
   requirements: string[];
   outcomes: string[];
-  course_ids: string;
+  course_ids: string; // JSON string array
+  free_sessions_count: string;
+  discounted_price: string;
+  cover_image: string;
+  telegram_url: string;
+  status: 'active' | string;
+  sub_category_id: string;
+  is_top: string;
+  is_highlight: string;
+  is_disabled: string;
+  date_added: string;
 }
 
+export interface Category {
+  id: string;
+  code: string;
+  name: string;
+  parent: string;
+  type: string | null;
+  slug: string;
+  date_added: string;
+  last_modified: string;
+  font_awesome_class: string;
+  thumbnail: string;
+  number_of_courses: number;
+}
+
+
 export interface AcademyData {
+  courses: Course[];
+  bundles: Bundle[];
   my_enrollments: {
-    courses: Course[];
-    bundles: Bundle[];
+    course_ids: string[];
+    bundle_ids: string[];
   };
-  top_courses: Course[];
-  top_bundles: Bundle[];
-  all_courses: Course[];
-  all_bundles: Bundle[];
-  // Other properties can be added here if needed in the future
-  highlight_courses: Course[];
-  highlight_bundles: Bundle[];
-  categories: any[];
+  top_course_ids: string[];
+  highlight_course_ids: string[];
+  top_bundle_ids: string[];
+  highlight_bundle_ids: string[];
+  categories: Category[];
 }
 
 export interface MyIndicatorSubscription {

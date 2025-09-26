@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AcademyPage from './pages/AcademyPage';
+import CategoryDetailPage from './pages/CategoryDetailPage';
 import ForexPage from './pages/ForexPage';
 import SignalsPage from './pages/SignalsPage';
 import IndicatorsPage from './pages/IndicatorsPage';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/academy" element={<AcademyPage />} />
+              <Route path="/academy/category/:categoryId" element={<CategoryDetailPage />} />
               <Route path="/forex" element={<ForexPage />} />
               <Route path="/signals" element={<SignalsPage />} />
               <Route path="/indicators" element={<IndicatorsPage />} />
