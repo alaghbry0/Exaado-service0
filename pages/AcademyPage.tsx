@@ -30,7 +30,6 @@ const AcademyPage: React.FC = () => {
   const [academyData, setAcademyData] = useState<AcademyData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
-  const [expandedCourseId, setExpandedCourseId] = useState<string | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -83,11 +82,6 @@ const AcademyPage: React.FC = () => {
     return academyData.bundles.filter(bundle => topBundleIds.has(bundle.id));
   }, [academyData]);
 
-
-  const handleExpand = (courseId: string) => {
-    setExpandedCourseId(prevId => (prevId === courseId ? null : courseId));
-  };
-
   const hasEnrollments = academyData && (academyData.my_enrollments.course_ids.length > 0 || academyData.my_enrollments.bundle_ids.length > 0);
 
   return (
@@ -109,11 +103,7 @@ const AcademyPage: React.FC = () => {
                             name={course.title}
                             description={course.short_description}
                             imageUrl={course.thumbnail}
-                            isExpanded={expandedCourseId === course.id}
-                            onExpand={() => handleExpand(course.id)}
-                            fullDescription={course.description}
-                            outcomes={course.outcomes}
-                            requirements={course.requirements}
+                            linkTo={`/course/${course.id}`}
                             completion={course.completion}
                           />
                     ))}
@@ -143,11 +133,7 @@ const AcademyPage: React.FC = () => {
                           tags={[course.level, `${course.total_number_of_lessons} lessons`, course.instructor_name]}
                           actionText={course.is_free_course === '1' ? "Access Now" : "Enroll Now"}
                           imageUrl={course.thumbnail}
-                          isExpanded={expandedCourseId === course.id}
-                          onExpand={() => handleExpand(course.id)}
-                          fullDescription={course.description}
-                          outcomes={course.outcomes}
-                          requirements={course.requirements}
+                          linkTo={`/course/${course.id}`}
                         />
                   ))}
                </HorizontalCarousel>
@@ -166,11 +152,7 @@ const AcademyPage: React.FC = () => {
                           tags={[course.level, `${course.total_number_of_lessons} lessons`, course.instructor_name]}
                           actionText={course.is_free_course === '1' ? "Access Now" : "Enroll Now"}
                           imageUrl={course.thumbnail}
-                          isExpanded={expandedCourseId === course.id}
-                          onExpand={() => handleExpand(course.id)}
-                          fullDescription={course.description}
-                          outcomes={course.outcomes}
-                          requirements={course.requirements}
+                          linkTo={`/course/${course.id}`}
                         />
                   ))}
                </HorizontalCarousel>
