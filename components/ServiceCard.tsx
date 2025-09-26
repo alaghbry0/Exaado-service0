@@ -19,15 +19,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ name, description, price, com
 
   const CardContent = (
     <>
-      {imageUrl ? <img src={imageUrl} alt={name} className="w-full h-40 object-cover" /> : <div className="w-full h-40 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 dark:text-gray-500">No Image</div>}
-      <div className="p-6">
+      {imageUrl ? <img src={imageUrl} alt={name} className="w-full h-36 object-cover" /> : <div className="w-full h-36 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 dark:text-gray-500">No Image</div>}
+      <div className="p-4 flex-grow flex flex-col">
         <div className="flex-grow">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">{name}</h3>
-          <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm h-10 overflow-hidden">{description}</p>
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 truncate">{name}</h3>
+          <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm truncate">{description}</p>
           {tags && (
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-1">
               {tags.map(tag => (
-                <span key={tag} className="bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full capitalize">{tag}</span>
+                <span key={tag} className="bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-300 text-xs font-medium px-2 py-0.5 rounded-full capitalize">{tag}</span>
               ))}
             </div>
           )}
@@ -47,25 +47,25 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ name, description, price, com
       )}
       
       {isEnrolled && (
-          <div className="px-6 mb-4 mt-auto">
+          <div className="px-4 mb-2 mt-auto">
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
                   <div className="bg-green-500 h-2.5 rounded-full" style={{ width: `${completion}%` }}></div>
               </div>
-              <p className="text-right text-xs text-gray-500 dark:text-gray-400 mt-1">{completion}% Complete</p>
+              <p className="text-right text-xs text-gray-500 dark:text-gray-400 mt-0.5">{completion}% Complete</p>
           </div>
       )}
       
-      <div className="p-6 border-t border-gray-200 dark:border-gray-700/50 flex justify-between items-center">
+      <div className="p-4 mt-auto border-t border-gray-200 dark:border-gray-700/50 flex justify-between items-center">
         {price && !comingSoon && (
-           <span className="text-2xl font-bold text-gray-900 dark:text-white">
+           <span className="text-xl font-bold text-gray-900 dark:text-white">
               {price.toLowerCase() === 'free' ? 'Free' : `$${price}`}
            </span>
         )}
-        {comingSoon && <span className="text-lg font-semibold text-yellow-500 dark:text-yellow-400">Coming Soon</span>}
+        {comingSoon && <span className="text-base font-semibold text-yellow-500 dark:text-yellow-400">Coming Soon</span>}
 
         <button
           disabled={isDisabled}
-          className={`${isEnrolled ? 'bg-green-600 enabled:hover:bg-green-500' : 'bg-blue-600 enabled:hover:bg-blue-500' } text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-200 disabled:bg-gray-500 dark:disabled:bg-gray-600 disabled:cursor-not-allowed`}
+          className={`${isEnrolled ? 'bg-green-600 enabled:hover:bg-green-500' : 'bg-blue-600 enabled:hover:bg-blue-500' } text-white font-semibold py-1.5 px-4 rounded-md transition-colors duration-200 disabled:bg-gray-500 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-sm`}
           onClick={(e) => {
             e.stopPropagation(); // Prevent navigation when clicking the button if inside a link
             // Add purchase logic here
