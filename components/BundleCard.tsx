@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface BundleCardProps {
+  id: string;
   title: string;
   description: string;
   price: string;
   imageUrl: string;
 }
 
-const BundleCard: React.FC<BundleCardProps> = ({ title, description, price, imageUrl }) => {
+const BundleCard: React.FC<BundleCardProps> = ({ id, title, description, price, imageUrl }) => {
   return (
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg flex flex-col h-full overflow-hidden transition-all duration-300 hover:border-purple-500 dark:hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/10">
       <img src={imageUrl} alt={title} className="w-full h-40 object-cover" />
@@ -18,9 +20,12 @@ const BundleCard: React.FC<BundleCardProps> = ({ title, description, price, imag
           <span className="text-2xl font-bold text-gray-900 dark:text-white">
             ${price}
           </span>
-          <button className="bg-purple-600 text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-200 hover:bg-purple-500">
+          <Link
+            to={`/bundle/${id}`}
+            className="bg-purple-600 text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-200 hover:bg-purple-500 text-center"
+          >
             View Bundle
-          </button>
+          </Link>
         </div>
       </div>
     </div>

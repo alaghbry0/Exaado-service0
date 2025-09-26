@@ -120,6 +120,7 @@ const AcademyPage: React.FC = () => {
                     {enrolledBundles.map(bundle => (
                         <BundleCard
                             key={`enrolled-${bundle.id}`}
+                            id={bundle.id}
                             title={bundle.title}
                             description={bundle.description}
                             price={bundle.price}
@@ -182,6 +183,7 @@ const AcademyPage: React.FC = () => {
                     {highlightBundles.map(bundle => (
                         <BundleCard
                             key={`highlight-${bundle.id}`}
+                            id={bundle.id}
                             title={bundle.title}
                             description={bundle.description}
                             price={bundle.price}
@@ -198,6 +200,7 @@ const AcademyPage: React.FC = () => {
                     {topBundles.map(bundle => (
                         <BundleCard
                             key={`top-${bundle.id}`}
+                            id={bundle.id}
                             title={bundle.title}
                             description={bundle.description}
                             price={bundle.price}

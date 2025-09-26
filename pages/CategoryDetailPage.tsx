@@ -101,6 +101,7 @@ const CategoryDetailPage: React.FC = () => {
             {bundlesInCategory.map(bundle => (
               <BundleCard
                 key={bundle.id}
+                id={bundle.id}
                 title={bundle.title}
                 description={bundle.description}
                 price={bundle.price}

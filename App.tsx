@@ -9,6 +9,7 @@ import IndicatorsPage from './pages/IndicatorsPage';
 import ConsultationsPage from './pages/ConsultationsPage';
 import { ThemeProvider } from './components/ThemeContext';
 import ThemeToggleButton from './components/ThemeToggleButton';
+import BundleDetailPage from './pages/BundleDetailPage';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/academy" element={<AcademyPage />} />
               <Route path="/academy/category/:categoryId" element={<CategoryDetailPage />} />
+              <Route path="/bundle/:bundleId" element={<BundleDetailPage />} />
               <Route path="/forex" element={<ForexPage />} />
               <Route path="/signals" element={<SignalsPage />} />
               <Route path="/indicators" element={<IndicatorsPage />} />
